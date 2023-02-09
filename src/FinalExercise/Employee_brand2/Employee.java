@@ -12,11 +12,12 @@ public class Employee extends Person implements CheckSalary {
     String degree;
     FinalExercise.Employee_brand2.Date startDay;
     byte dayOfWork;
+    byte outTime;
 
     public Employee() {
     }
 
-    public Employee(String name, boolean sex, Date birthday, String address, String phone, String email, String identification, String religion, boolean marriage, String id, String department, String role, String englishProficiency, String degree, Date startDay, byte dayOfWork) {
+    public Employee(String name, boolean sex, Date birthday, String address, String phone, String email, String identification, String religion, boolean marriage, String id, String department, String role, String englishProficiency, String degree, Date startDay, byte dayOfWork, byte outTime) {
         super(name, sex, birthday, address, phone, email, identification, religion, marriage);
         this.id = id;
         this.department = department;
@@ -25,6 +26,7 @@ public class Employee extends Person implements CheckSalary {
         this.degree = degree;
         this.startDay = startDay;
         this.dayOfWork = dayOfWork;
+        this.outTime = outTime;
     }
 
     public String getId() {
@@ -83,19 +85,27 @@ public class Employee extends Person implements CheckSalary {
         this.dayOfWork = dayOfWork;
     }
 
+    public byte getOutTime() {
+        return outTime;
+    }
+
+    public void setOutTime(byte outTime) {
+        this.outTime = outTime;
+    }
+
     // Câu 2 Tính lương
     public long salary() {
         switch (role) {
             case "Accountant":
-                return dayOfWork * Wage.Accountant.getValue();
+                return dayOfWork * Wage.Accountant.getValue() + this.outTime*300000;
             case "Engineer":
-                return dayOfWork * Wage.Engineer.getValue();
+                return dayOfWork * Wage.Engineer.getValue() + this.outTime*300000;
             case "Housekeeper":
-                return dayOfWork * Wage.Housekeeper.getValue();
+                return dayOfWork * Wage.Housekeeper.getValue() + this.outTime*300000;
             case "Manager":
-                return dayOfWork * Wage.Manager.getValue();
+                return dayOfWork * Wage.Manager.getValue() + this.outTime*300000;
             case "Receptionist":
-                return dayOfWork * Wage.Receptionist.getValue();
+                return dayOfWork * Wage.Receptionist.getValue() + this.outTime*300000;
             default:
                 return 0;
         }
@@ -146,6 +156,7 @@ public class Employee extends Person implements CheckSalary {
                 ", degree='" + degree + '\'' +
                 ", startDay=" + startDay.day + "/" + startDay.month + "/" + startDay.year +
                 ", dayOfWork=" + dayOfWork +
+                ",outTime="+outTime+
                 ", name='" + name + '\'' +
                 ", Sex=" + Sex +
                 ", birthday=" + birthday.day + "/" + birthday.month + "/" + birthday.year +

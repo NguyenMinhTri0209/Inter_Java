@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 
 public class Manager extends Employee{
 
-    public Manager(String name, boolean sex, Date birthday, String address, String phone, String email, String identification, String religion, boolean marriage, String id, String department, String role, String englishProficiency, String degree, Date startDay, byte dayOfWork) {
-        super(name, sex, birthday, address, phone, email, identification, religion, marriage, id, department, role, englishProficiency, degree, startDay, dayOfWork);
+    public Manager(String name, boolean sex, Date birthday, String address, String phone, String email, String identification, String religion, boolean marriage, String id, String department, String role, String englishProficiency, String degree, Date startDay, byte dayOfWork, byte outTime) {
+        super(name, sex, birthday, address, phone, email, identification, religion, marriage, id, department, role, englishProficiency, degree, startDay, dayOfWork, outTime);
     }
-
+    
     //Xem bảng lương
     public void viewTableSalary(List<Employee> employeeList){
         for (Employee e : employeeList){
@@ -38,7 +38,7 @@ public class Manager extends Employee{
         System.out.println(employeeResult.salary());
     }
 
-    
+
 }
 
 
